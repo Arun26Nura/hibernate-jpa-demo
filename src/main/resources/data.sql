@@ -17,7 +17,6 @@ insert into review (id, rating,description,course_id) values (40002,3,'Okay',100
 insert into review (id,rating, description,course_id) values (40003,1,'Bad',10003)
 
 insert into student_course(student_id,course_id) values (20001,10001)
-insert into student_course(student_id,course_id) values (20001,10002)
 insert into student_course(student_id,course_id) values (20001,10003)
 insert into student_course(student_id,course_id) values (20002,10001)
 insert into student_course(student_id,course_id) values (20003,10001)

@@ -2,11 +2,12 @@ package com.example.employee;
 
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+//@DiscriminatorColumn(name = "EMPLOYEE_TYPE")
+//@MappedSuperclass
 public abstract class Employee {
     
     @Id
@@ -19,6 +20,7 @@ public abstract class Employee {
     }
 
     public Employee(String name) {
+        this.name = name;
     }
 
     public Long getId() {
