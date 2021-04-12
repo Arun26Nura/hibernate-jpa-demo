@@ -2,6 +2,7 @@ package com.example;
 
 import com.example.course.CourseRepository;
 
+import com.example.review.Review;
 import com.example.student.Student;
 import com.example.student.StudentRepository;
 import org.slf4j.Logger;
@@ -11,6 +12,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 @SpringBootApplication
@@ -30,15 +34,27 @@ public class HibernateJpaDemoApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-       //logger.info(courseRepo.findById(1).toString());
-       // courseRepo.deleteById(1);
-        //System.out.println("Course size: "+ courseRepo.findAllQuery().size());
-    // studentRepo.saveStudentWithPassport();
-      //  System.out.println(students);
-       // System.out.println(students.getPassport());
-       studentRepo.getStudentByIDWithPassport(20001L);
-       //System.out.println(student);
-      // System.out.println(student.getPassport());
-        studentRepo.findPassportFirst(30001L);
+
+      // studentRepo.getStudentByIDWithPassport(20001L);
+
+      //  studentRepo.findPassportFirst(30001L);
+
+        List<Review> reviews  = new ArrayList<>();
+        Review review1= new Review(4,"It's okay");
+        Review review2= new Review(3,"Not bad, its Also not okay");
+        reviews.add(review1);
+        reviews.add(review2);
+
+      // courseRepo.addReviewsforCourse(10003L);
+
+      //  courseRepo.addListOfReviews(10003L,reviews);
+
+        //courseRepo.getCoursewithReview(10001L);
+       // courseRepo.getReviewWithCourse(40001L);
+       // studentRepo.getStudentsWithCourses(20001L);
+        studentRepo.createnewStudentsWithCourse();
     }
+
+
+
 }

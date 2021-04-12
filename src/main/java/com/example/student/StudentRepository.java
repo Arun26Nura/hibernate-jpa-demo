@@ -3,6 +3,7 @@ package com.example.student;
 
 
 import com.example.course.Course;
+import com.example.course.CourseRepository;
 import com.example.passport.Passport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,6 +18,9 @@ public class StudentRepository {
 
     @Autowired
     EntityManager entity;
+
+    @Autowired
+    CourseRepository repo;
 
 
     @Transactional
@@ -62,5 +66,28 @@ public class StudentRepository {
         Passport passport= entity.find(Passport.class,id);
         System.out.println(passport.getStudent());
     }
+
+    //Many to Many mapping methods
+    public void getStudentsWithCourses(Long id){
+        Student student= getStudentByID(id);
+        System.out.println(student);
+        System.out.println(student.getCourses());
+    }
+
+    public void createnewStudentsWithCourse(){
+        Student student= new Student("Jai");
+        Course course= new Course("MicroServices");
+        entity.persist(course);
+        entity.persist(student);
+        student.addCourse(course);
+
+        List<Course> courses= repo.findAllQuery();
+        for(Course course1:courses){
+            student.addCourse(course1);
+
+        }
+
+    }
+
 
 }
