@@ -83,9 +83,7 @@ public class StudentRepository {
 
         List<Course> courses= repo.findAllQuery();
         for(Course course1:courses){
-            student.addCourse(course1);
-
-        }
+            student.addCourse(course1);        }
 
     }
 
