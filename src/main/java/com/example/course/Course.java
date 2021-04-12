@@ -1,9 +1,11 @@
 package com.example.course;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.example.review.Review;
+import com.example.student.Student;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Course {
@@ -13,6 +15,21 @@ public class Course {
     private Long id;
 
     private String name;
+
+    @OneToMany(mappedBy = "course")
+    private List<Review> reviews= new ArrayList<>();
+
+
+    @ManyToMany(mappedBy = "courses")
+    private List<Student> students= new ArrayList<>();
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void addStudent(Student student) {
+        this.students.add(student);
+    }
 
     public Course(String name) {
         this.name = name;
@@ -32,6 +49,19 @@ public class Course {
     public Long getId() {
         return id;
     }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void addReview(Review review) {
+        this.reviews.add(review) ;
+    }
+    public void removeReview(Review review) {
+        this.reviews.remove(review) ;
+    }
+
+
 
     @Override
     public String toString() {

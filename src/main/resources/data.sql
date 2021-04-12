@@ -12,6 +12,13 @@ insert into student(id,name,passport_id) values (20003,'Guru',30003)
 
 
 
-insert into review (id, description) values (40001,'Good')
-insert into review (id, description) values (40002,'Okay')
-insert into review (id, description) values (40003,'Bad')
+insert into review (id, rating,description,course_id) values (40001,5,'Good',10001)
+insert into review (id, rating,description,course_id) values (40002,3,'Okay',10001)
+insert into review (id,rating, description,course_id) values (40003,1,'Bad',10003)
+
+insert into student_course(student_id,course_id) values (20001,10001)
+insert into student_course(student_id,course_id) values (20001,10002)
+insert into student_course(student_id,course_id) values (20001,10003)
+insert into student_course(student_id,course_id) values (20002,10001)
+insert into student_course(student_id,course_id) values (20003,10001)
+insert into student_course(student_id,course_id) values (20003,10003)
